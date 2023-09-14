@@ -81,9 +81,23 @@ nav .btn-menu {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 20px 0px; /* Ajout de marge en haut et en bas */
-
+    border-radius: 50px;
 
 }
+
+#post-button{
+    margin-top: 50px;
+    color: #ffffff;
+    background-color: #0e6cd2;
+    padding: 20px;
+    cursor: pointer;
+}
+
+#post-button:hover{
+    background-color: #0350a4;
+}
+
+
 
 /* Reste du CSS inchangé */
 /* ... */

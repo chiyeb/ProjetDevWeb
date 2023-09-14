@@ -24,6 +24,7 @@
         <a class="btn-menu" href="pour-toi.php">Pour toi</a>
         <a class="btn-menu" href="pour-toi.php">Profile</a>
         <a class="btn-menu" href="pour-toi.php">Nous Contacter</a>
+        <button class="btn-menu" id="post-button">Nouveau Post</button>
     </nav>
 
 
