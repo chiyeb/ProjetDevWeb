@@ -1,61 +1,72 @@
-/* style.css */
-body {
-    font-family: Arial, sans-serif;
+*{
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    font-family: Arial;
 }
-
 header {
     background-color: #333;
     color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-header h1 {
-    margin: 0;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #fff;
-}
-
-main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-article {
-    margin-bottom: 30px;
-}
-
-article h2 {
-    font-size: 24px;
-    margin: 0;
-}
-
-article p {
-    line-height: 1.5;
-}
-
-footer {
-    text-align: center;
     padding: 10px 0;
-    background-color: #333;
-    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+header ul {
+    display: flex;
+    justify-content: center;
+}
+
+header ul li {
+    list-style: none;
+    margin: 20px;
+}
+
+/* Styles pour la barre de navigation */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+/* Styles pour les boutons */
+.btn {
+    background-color: #6aacf3;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-right: 20px;
+    border-radius: 50px;
+    transition: 0.5s;
+}
+.btn:hover{
+    background-color: #3f91d2;
+    transition: 0.5s;
+}
+
+/* Style pour le logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+/* Style pour les boutons "Pour toi" et "Accueil" */
+.middle-buttons {
+    flex-grow: 1; /* Les boutons prennent l'espace disponible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.middle-buttons .btn-menu {
+    margin: 0 10px; /* Espacement entre les boutons */
+    text-decoration: none;
+    color: #ffffff;
+    position: relative;
+    position: relative;
+
+
+}
+
