@@ -6,24 +6,26 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Y</title>
 </head>
 <body>
 <header>
     <div class="logo">Y</div>
-    <div class="middle-buttons">
+    <div class="search-bar">
+        <input type="text" placeholder="Rechercher">
+        <button>Rechercher</button>
+    </div>
+    <div class="btn">NOM</div>
+</header>
+
+
+    <nav>
         <a class="btn-menu" href="accueil.php">Accueil</a>
         <a class="btn-menu" href="pour-toi.php">Pour toi</a>
-    </div>
-    <nav>
-        <a class="btn" href="page-login.html">Login</a>
-        <a class="btn" href="page-register.html">Register</a>
+        <a class="btn-menu" href="pour-toi.php">Profile</a>
+        <a class="btn-menu" href="pour-toi.php">Nous Contacter</a>
     </nav>
-
-</header>
 
 
 </body>
 </html>
-
-
