@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <head>
+    <script src="https://kit.fontawesome.com/2310277d03.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -19,14 +20,26 @@
 </header>
 
 
-    <nav>
+<nav>
+    <div class="menu-item">
+        <i class="fa-solid fa-house"></i>
         <a class="btn-menu" href="accueil.php">Accueil</a>
+    </div>
+    <div class="menu-item">
+        <i class="fa-solid fa-bolt"></i>
         <a class="btn-menu" href="pour-toi.php">Pour toi</a>
+    </div>
+    <div class="menu-item">
+        <i class="fa-solid fa-user"></i>
         <a class="btn-menu" href="pour-toi.php">Profile</a>
+    </div>
+    <div class="menu-item">
+        <i class="fa-solid fa-message"></i>
         <a class="btn-menu" href="pour-toi.php">Nous Contacter</a>
-        <button class="btn-menu" id="post-button">Nouveau Post</button>
-    </nav>
+    </div>
 
+        <button class="btn-menu" id="post-button">Nouveau Post</button>
+</nav>
 
 </body>
 </html>
