@@ -11,15 +11,15 @@
 <div class="container">
     <H1>Nous Contactez</H1>
     <form method="POST" action="Contact.php">
-        <input type="text"name="nom"
+        <input type="text" name="nom"
         placeholder="Indiquez votre nom"><br>
-        <input type="text"name="Prenom"
+        <input type="text" name="Prenom"
         placeholder="Indiquez votre Prenom"><br>
         <input type="email" name="email"
         placeholder="Indiquez votre adresse mail"><br>
         <textarea name="Message" placeholder="Votre message"></textarea>
 
-    <input type="submit" name="submit" value="Envoyer">
+    <input type="submit" name="submit" value="Envoyer"><br>
     </form>
 
 </div>

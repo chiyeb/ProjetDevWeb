@@ -1,11 +1,65 @@
-*, ::before, ::after{
+/* Réinitialisation des styles par défaut */
+*, ::before, ::after {
     box-sizing: border-box;
-    margin: 0;
+    margin:0;
     padding: 0;
-    font-family: Arial,Helvetica,sans-serif;
 }
 
-
-body{
+/* Utilisation d'une police de caractères de secours en cas d'indisponibilité de la première */
+body {
     min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6; /* Espacement des lignes pour une meilleure lisibilité */
+    background-color: #f0f0f0; /* Couleur de fond de la page */
+    color: #333; /* Couleur du texte par défaut */
+}
+
+/* Style de la classe container */
+.container {
+    max-width: 800px; /* Largeur maximale du contenu pour un meilleur contrôle de la mise en page */
+    margin: 0 auto; /* Centrage du contenu */
+    padding: 20px; /* Espace intérieur du conteneur */
+    background-color: #fff; /* Couleur de fond du conteneur */
+    border-radius: 5px; /* Coins arrondis pour le conteneur */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère pour le conteneur */
+}
+
+/* Style de l'en-tête (H1) */
+.container h1 {
+    font-size: 28px; /* Taille de police plus grande pour le titre */
+    margin-bottom: 20px; /* Espace en bas du titre */
+    text-align: center; /* Centrage du texte */
+}
+
+/* Style des étiquettes des champs de saisie */
+.container label {
+    font-weight: bold; /* Texte en gras */
+    display: block; /* Affichage en bloc pour empiler les étiquettes verticalement */
+    margin-bottom: 8px; /* Espace en bas de chaque étiquette */
+}
+
+/* Style des champs de saisie et de la zone de texte */
+.container input[type="text"],
+.container input[type="email"],
+.container textarea {
+    width: 100%; /* Largeur totale du parent */
+    padding: 10px; /* Espace intérieur des champs de saisie */
+    margin-bottom: 15px; /* Espace en bas de chaque champ de saisie */
+    border: 1px solid #ccc; /* Bordure légère autour des champs */
+    border-radius: 4px; /* Coins arrondis pour les champs */
+}
+
+/* Style du bouton Envoyer */
+.container input[type="submit"] {
+    background-color: #007bff; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte du bouton */
+    padding: 10px 20px; /* Espace intérieur du bouton */
+    border: none; /* Suppression de la bordure */
+    border-radius: 4px; /* Coins arrondis pour le bouton */
+    cursor: pointer; /* Curseur de type main pour indiquer la possibilité de cliquer */
+    transition: background-color 0.2s; /* Transition de couleur au survol */
+}
+
+.container input[type="submit"]:hover {
+    background-color: #0056b3; /* Couleur de fond du bouton au survol */
 }
