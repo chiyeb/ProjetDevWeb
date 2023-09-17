@@ -14,7 +14,6 @@
     <div class="logo">Y</div>
     <div class="search-bar">
         <input type="text" placeholder="Rechercher">
-        <button>Rechercher</button>
     </div>
     <div class="btn">NOM</div>
 </header>
@@ -27,7 +26,7 @@
     </div>
     <div class="menu-item">
         <i class="fa-solid fa-bolt"></i>
-        <a class="btn-menu" href="pour-toi.php">Pour toi</a>
+        <a class="btn-menu" href="pour-toi.php">Tendance</a>
     </div>
     <div class="menu-item">
         <i class="fa-solid fa-user"></i>
@@ -35,7 +34,7 @@
     </div>
     <div class="menu-item">
         <i class="fa-solid fa-message"></i>
-        <a class="btn-menu" href="pour-toi.php">Nous Contacter</a>
+        <a class="btn-menu" href="formulaire.php">Nous Contacter</a>
     </div>
 
         <button class="btn-menu" id="post-button">Nouveau Post</button>
