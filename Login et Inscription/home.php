@@ -30,8 +30,26 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                 <button class="poster" type="submit">Poster</button>
             </label>
         </form>
+            <?php
+            // Inclure le fichier AffichagePosts.php pour utiliser la fonction afficherPosts
+            require 'AffichagePost.php';
+            // Appel de la fonction afficherPosts pour obtenir les posts
+            $posts = afficherPosts();
+
+            // Affichage des posts
+            foreach ($posts as $post) {
+                echo "<div class='post-container'>";
+                echo "<h3>" . $post['titre_posts'] . "</h3>";
+                echo "<p>" . $post['message_posts'] . "</p>";
+                echo "<p>Date : " . $post['date_posts'] . "</p>";
+                echo "<p>Auteur : " . $post['auteur_posts'] . "</p>";
+                echo "<p>Catégorie : " . $post['categorie_posts'] . "</p>";
+                echo "</div>";
+            }
+            ?>
         </div>
     </main>
+
     </body>
     </html>
 

@@ -29,14 +29,14 @@
 
     <label>Utilisateur</label>
     <?php if (isset($_GET['error'])) { ?>
-        <input type="text" name="name" placeholder="Utilisateur" value="<?php echo $_GET['error']; ?>"><br>
+        <input type="text" name="username" placeholder="Utilisateur" value="<?php echo $_GET['error']; ?>"><br>
     <?php } else{ ?>
-        <input type="text" name="name" placeholder="Utilisateur"><br>
+        <input type="text" name="username" placeholder="Utilisateur"><br>
     <?php  } ?>
 
 
     <label>Mot de passe</label>
-    <input type="password" name="passeword" placeholder="Mot de passe"><br>
+    <input type="password" name="password" placeholder="Mot de passe"><br>
 
     <button type="submit">Se Connecter</button>
     <a href="index.php" class="creation">Déjà un compte ? Connectez-vous</a>
