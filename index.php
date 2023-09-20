@@ -36,9 +36,26 @@
         <i class="fa-solid fa-message"></i>
         <a class="btn-menu" href="formulaire.php">Nous Contacter</a>
     </div>
-
+        <a href="Login%20et%20Inscription/connexion.php">se connetcer</a>
         <button class="btn-menu" id="post-button">Nouveau Post</button>
 </nav>
+//afficher les posts
+<?php
+// Inclure le fichier AffichagePosts.php pour utiliser la fonction afficherPosts
+require 'AffichagePost.php';
+// Appel de la fonction afficherPosts pour obtenir les posts
+$posts = afficherPosts();
 
+// Affichage des posts
+foreach ($posts as $post) {
+    echo "<div class='post-container'>";
+    echo "<h3>" . $post['titre_posts'] . "</h3>";
+    echo "<p>" . $post['message_posts'] . "</p>";
+    echo "<p>Date : " . $post['date_posts'] . "</p>";
+    echo "<p>Auteur : " . $post['auteur_posts'] . "</p>";
+    echo "<p>Catégorie : " . $post['categorie_posts'] . "</p>";
+    echo "</div>";
+}
+?>
 </body>
 </html>

@@ -11,7 +11,6 @@ try {
     echo "Erreur de connexion à la base de données : " . $e->getMessage();
 
 }
-
 //dans le formulaire pour créer un post il faudra mettre les différentes valeurs comme ci dessous
 if ($_SERVER["REQUEST_METHOD"]=="POST"){
     $id_post=$_POST["id_post"];
@@ -21,7 +20,6 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     $auteur_post=$_POST["auteur_post"];
     $categorie_post=$_POST["categorie_post"];
     $query = "INSERT INTO posts (id_post,titre_post,message_post, date_post,auteur_post,categorie_post) VALUES (:id_post, :titre_post, :message_post, :date_post , :auteur_post, :categorie_post)";
-
     $stmt = $db->prepare($query);
     $stmt->bindParam(':id_post', $id_post, PDO::PARAM_INT);
     $stmt->bindParam(':titre_post', $titre_post, PDO::PARAM_STR);
@@ -30,7 +28,5 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     $stmt->bindParam(':auteur_post', $auteur_post, PDO::PARAM_INT);
     $stmt->bindParam(':categorie_post', $titre_post, PDO::PARAM_STR);
     $stmt->execute();
-
-
 }
 ?>
