@@ -15,7 +15,7 @@
         <input type="text" name="email" placeholder="Adresse e-mail">
 
         <label>Mot de passe</label>
-        <input type="password" name="passeword" placeholder="Mot de passe">
+        <input type="password" name="password" placeholder="Mot de passe">
 
         <button type="submit">Se Connecter</button>
         <a href="Inscription.php" class="creation">Créer un compte</a>
