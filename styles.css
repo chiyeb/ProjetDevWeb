@@ -129,6 +129,57 @@ nav {
     cursor: pointer;
 }
 
+/* Style pour la fenêtre modale */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Style pour le bouton de fermeture de la fenêtre modale */
+.close {
+    position: absolute;
+    top: 200px;
+    right: 330px;
+    font-size: 60px;
+    cursor: pointer;
+    color: #A94442;
+}
+
+/* Style pour la zone de texte du post */
+#post-content {
+    width: 100%;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Style pour le bouton "Créer un post" */
+#create-post-button {
+    background-color: var(--second-bg-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 /*------PAGE DE CONTACT------*/
 
 .container {
@@ -172,6 +223,5 @@ nav {
     cursor: pointer;
     border-radius: 50px;
 }
-
 
 /*---------------------------*/
