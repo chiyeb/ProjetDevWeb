@@ -1,5 +1,5 @@
-<?php
-function afficherPosts(){
+    <?php
+    function afficherPosts(){
     require 'sql-login.php'; // Utilisez un fichier approprié pour la connexion PDO
     require 'Post.php'; // Incluez la classe Post
 
@@ -43,8 +43,8 @@ function afficherPosts(){
         // Gérez les erreurs ici en fonction de la connexion à la base de données
         echo "Erreur lors de l'exécution de la requête SQL : " . $conn->errorInfo()[2];
     }
-    // Fermez la connexion à la base de données
-    $conn = null;
+        // Fermez la connexion à la base de données
+        $conn = null;
     return $posts;
-}
-?>
+    }
+    ?>

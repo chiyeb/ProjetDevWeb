@@ -37,6 +37,7 @@
         <a class="btn-menu" href="formulaire.php">Nous Contacter</a>
     </div>
         <a href="Login%20et%20Inscription/connexion.php">se connetcer</a>
+        <a href="msgpriv.php">msg</a>
         <button class="btn-menu" id="post-button">Nouveau Post</button>
 </nav>
 //afficher les posts
