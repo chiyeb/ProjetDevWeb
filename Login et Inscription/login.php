@@ -9,10 +9,10 @@ if (isset($_POST['email']) && isset($_POST['password'])){
     $pass = $_POST['password'];
 
     if (empty($email)) {
-        header("Location: index.php?error=E-mail requis");
+        header("Location: connexion.php?error=E-mail requis");
         exit();
     } else if (empty($pass)) {
-        header("Location: index.php?error=Mot de passe requis");
+        header("Location: connexion.php?error=Mot de passe requis");
         exit();
     } else {
         // Utilisez des requêtes préparées avec PDO pour éviter les injections SQL
@@ -31,12 +31,12 @@ if (isset($_POST['email']) && isset($_POST['password'])){
             header("Location: /../index.php");
             exit();
         } else {
-            header("Location: index.php?error=E-mail ou Mot de passe Incorrect");
+            header("Location: connexion.php?error=E-mail ou Mot de passe Incorrect");
             exit();
         }
     }
 } else {
-    header("Location: index.php");
+    header("Location: connexion.php");
     exit();
 }
 ?>
