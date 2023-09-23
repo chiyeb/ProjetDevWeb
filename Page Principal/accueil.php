@@ -36,7 +36,7 @@
     </div>
     <div class="menu-item">
         <i class="fa-solid fa-message"></i>
-        <a class="btn-menu" href="formulaire.php">Nous Contacter</a>
+        <a class="btn-menu" href="../Contact/formulaire.php">Nous Contacter</a>
     </div>
 
         <button class="btn-menu" id="post-button">Nouveau Post</button>
@@ -44,7 +44,7 @@
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close" id="close-button">&times;</span>
-        <form class="post-style" action="creer_post.php" method="post">
+        <form class="post-style" action="../Post/creer_post.php" method="post">
             <input type="hidden" name="id_post" value="<?php echo uniqid(); ?>">
 
             <label class="label-style" for="titre">Titre :</label>
