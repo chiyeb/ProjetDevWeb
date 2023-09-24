@@ -31,13 +31,18 @@
         <a class="btn-menu" href="pour-toi.php">Tendance</a>
     </div>
     <div class="menu-item">
+        <i class="fa-solid fa-message"></i>
+        <a class="btn-menu" href="../Message%20Privé/msgpriv.php">Messages</a>
+    </div>
+    <div class="menu-item">
         <i class="fa-solid fa-user"></i>
         <a class="btn-menu" href="pour-toi.php">Profile</a>
     </div>
     <div class="menu-item">
-        <i class="fa-solid fa-message"></i>
+        <i class="fa-solid fa-envelope"></i>
         <a class="btn-menu" href="../Contact/formulaire.php">Nous Contacter</a>
     </div>
+
 
         <button class="btn-menu" id="post-button">Nouveau Post</button>
 </nav>
@@ -47,18 +52,18 @@
         <form class="post-style" action="../Post/creer_post.php" method="post">
             <input type="hidden" name="id_post" value="<?php echo uniqid(); ?>">
 
-            <label class="label-style" for="titre">Titre :</label>
+            <label class="style-post-label" for="titre">Titre :</label>
             <input class="input-style" type="text" id="titre" name="titre_post" required><br><br>
 
-            <label for="message">Message :</label>
+            <label class="style-post-label" for="message">Message :</label>
             <textarea class="input-style"  id="message" name="message_post" rows="4" cols="50" required></textarea><br><br>
 
             <input class="input-style"  type="hidden" name="date_post" value="<?php echo date('Y-m-d'); ?>">
 
-            <label for="auteur">Auteur :</label>
+            <label class="style-post-label" for="auteur">Auteur :</label>
             <input class="input-style"  type="text" id="auteur" name="auteur_post" required><br><br>
 
-            <label for="categorie">Catégorie :</label>
+            <label class="style-post-label" for="categorie">Catégorie :</label>
             <select id="categorie" name="categorie_post" required>
                 <option value="Technologie">Technologie</option>
                 <option value="Actualités">Actualités</option>
@@ -66,7 +71,7 @@
                 <option value="Autre">Autre</option>
             </select><br><br>
 
-            <input type="submit" value="Créer le Post">
+            <input class="submit-button" type="submit" value="Créer le Post">
         </form>
     </div>
 </div>

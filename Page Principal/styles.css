@@ -89,12 +89,19 @@ nav {
     display: flex;
     align-items: center; /* Aligner les icônes et les boutons verticalement */
     padding: 20px 20px; /* Ajuster l'espacement entre les icônes et les boutons */
+    border-radius: 50px;
+
+
 }
 
 .menu-item:hover{
     background-color: var(--hover-bg-color);
-    border-radius: 50px;
     transition: 0.5s;
+}
+.menu-item:hover i{
+    color: var(--second-bg-color);
+    transition: 0.5s;
+    font-size: 25px;
 }
 
 .menu-item i {
@@ -175,6 +182,8 @@ nav {
 
 
 /*---------------------------*/
+
+
 /* Style pour la fenêtre modale */
 .modal {
     display: none;
@@ -184,23 +193,23 @@ nav {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .modal-content {
-    background-color: #fff;
+    background-color: var(--main-bg-color);
     margin: 15% auto;
     padding: 20px;
     border-radius: 10px;
-    width: 60%;
+    width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Style pour le bouton de fermeture de la fenêtre modale */
 .close {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top : 250px;
+    right: 425px;
     font-size: 25px;
     cursor: pointer;
     color: #ffffff;
@@ -224,4 +233,34 @@ nav {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+
+
+}
+
+.submit-button{
+    border-radius: 50px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.style-post-label{
+    color: #ffffff;
+}
+
+/* Styles pour aligner les input et leurs labels en colonne */
+.style-post-label {
+    display: block; /* Afficher les labels en bloc (une ligne par label) */
+    margin-bottom: 10px; /* Ajouter une marge en bas de chaque label */
+}
+
+.input-style {
+    width: 50%; /* Faire en sorte que les input prennent la largeur complète du conteneur */
+    padding: 5px; /* Ajouter un peu de marge intérieure pour un meilleur espacement */
+    margin-bottom: 10px; /* Ajouter une marge en bas de chaque input */
+}
+
+/* Style pour le bouton submit */
+.submit-button {
+    display: block; /* Afficher le bouton en bloc (une ligne) */
+    margin-top: 10px; /* Ajouter une marge en haut du bouton */
 }
