@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 session_start();
 require 'sql-login.php'; // Utilisez un fichier approprié pour la connexion PDO
 $conn = dbconnect();
@@ -9,10 +12,10 @@ if (isset($_POST['email']) && isset($_POST['password'])){
     $pass = $_POST['password'];
 
     if (empty($email)) {
-        header("Location: index.php?error=E-mail requis");
+        header("Location: ../index.php?error=E-mail requis");
         exit();
     } else if (empty($pass)) {
-        header("Location: index.php?error=Mot de passe requis");
+        header("Location: ../index.php?error=Mot de passe requis");
         exit();
     } else {
         // Utilisez des requêtes préparées avec PDO pour éviter les injections SQL
@@ -28,15 +31,15 @@ if (isset($_POST['email']) && isset($_POST['password'])){
             $_SESSION['email'] = $row['email'];
             $_SESSION['username'] = $row['username'];
             $_SESSION['id'] = $row['id'];
-            header("Location: home.php");
+            header("Location: ../PagePrincipal/accueil.php");
             exit();
         } else {
-            header("Location: index.php?error=E-mail ou Mot de passe Incorrect");
+            header("Location: ../index.php?error=E-mail ou Mot de passe Incorrect");
             exit();
         }
     }
 } else {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>
