@@ -19,7 +19,7 @@
 
         <button type="submit">Se Connecter</button>
         <a href="Log&Inscr/Inscription.php" class="creation">Créer un compte</a>
-        <a href="" class="oublier">Mot de pass oublié ?</a>
+        <a href="" class="oublier">Mot de passe oublié ?</a>
     </form>
 </body>
 </html>
