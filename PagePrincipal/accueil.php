@@ -12,86 +12,95 @@
     <title>Y</title>
 </head>
 <body>
+
 <header>
     <div class="logo">Y</div>
     <div class="search-bar">
         <input type="text" placeholder="Rechercher">
     </div>
-    <div class="btn">NOM</div>
+    <div class="btn">A FAIRE</div>
 </header>
 
+<div class="wrapper">
+    <nav>
+        <div class="menu-item">
+            <i class="fa-solid fa-house"></i>
+            <a class="btn-menu" href="accueil.php">Accueil</a>
+        </div>
+        <div class="menu-item">
+            <i class="fa-solid fa-bolt"></i>
+            <a class="btn-menu" href="pour-toi.php">Tendance</a>
+        </div>
+        <div class="menu-item">
+            <i class="fa-solid fa-message"></i>
+            <a class="btn-menu" href="../MsgPriv/msgpriv.php">Messages</a>
+        </div>
+        <div class="menu-item">
+            <i class="fa-solid fa-user"></i>
+            <a class="btn-menu" href="../Profil/AfficherProfil.php">Profile</a>
+        </div>
+        <div class="menu-item">
+            <i class="fa-solid fa-envelope"></i>
+            <a class="btn-menu" href="../Contact/formulaire.php">Nous Contacter</a>
+        </div>
 
-<nav>
-    <div class="menu-item">
-        <i class="fa-solid fa-house"></i>
-        <a class="btn-menu" href="accueil.php">Accueil</a>
+
+            <button class="btn-menu" id="post-button">Nouveau Post</button>
+    </nav>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-button">&times;</span>
+            <form class="post-style" action="../Post/creer_post.php" method="post">
+                <input type="hidden" name="id_post" value="<?php echo uniqid(); ?>">
+
+                <label class="style-post-label" for="titre">Titre :</label>
+                <input class="input-style" type="text" id="titre" name="titre_post" required><br><br>
+
+                <label class="style-post-label" for="message">Message :</label>
+                <textarea class="input-style"  id="message" name="message_post" rows="4" cols="50" required></textarea><br><br>
+
+                <input class="input-style"  type="hidden" name="date_post" value="<?php echo date('Y-m-d'); ?>">
+
+                <label class="style-post-label" for="auteur">Auteur :</label>
+                <input class="input-style"  type="text" id="auteur" name="auteur_post" required><br><br>
+
+                <label class="style-post-label" for="categorie">Catégorie :</label>
+                <select id="categorie" name="categorie_post" required>
+                    <option value="Technologie">Technologie</option>
+                </select><br><br>
+
+                <input class="submit-button" type="submit" value="Créer le Post">
+            </form>
+        </div>
     </div>
-    <div class="menu-item">
-        <i class="fa-solid fa-bolt"></i>
-        <a class="btn-menu" href="pour-toi.php">Tendance</a>
-    </div>
-    <div class="menu-item">
-        <i class="fa-solid fa-message"></i>
-        <a class="btn-menu" href="../MsgPriv/msgpriv.php">Messages</a>
-    </div>
-    <div class="menu-item">
-        <i class="fa-solid fa-user"></i>
-        <a class="btn-menu" href="pour-toi.php">Profile</a>
-    </div>
-    <div class="menu-item">
-        <i class="fa-solid fa-envelope"></i>
-        <a class="btn-menu" href="../Contact/formulaire.php">Nous Contacter</a>
-    </div>
+    <script src="script.js"></script>
 
 
-        <button class="btn-menu" id="post-button">Nouveau Post</button>
-</nav>
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close" id="close-button">&times;</span>
-        <form class="post-style" action="../Post/creer_post.php" method="post">
-            <input type="hidden" name="id_post" value="<?php echo uniqid(); ?>">
+    <section class="post-principal">
+        <?php
+        // Inclure le fichier AffichagePosts.php pour utiliser la fonction afficherPosts
+        require '../Post/AffichagePost.php';
+        // Appel de la fonction afficherPosts pour obtenir les posts
+        $posts = afficherPosts();
 
-            <label class="style-post-label" for="titre">Titre :</label>
-            <input class="input-style" type="text" id="titre" name="titre_post" required><br><br>
+        // Affichage des posts dans l'ordre inverse
+        for ($i = count($posts) - 1; $i >= 0; $i--) {
+            $post = $posts[$i];
+            echo "<div class='post-container'>";
+            echo "<h3>" . $post->getTitre() . "</h3>";
+            echo "<p class='author-post'>" . $post->getAuteur() . "</p>";
+            echo "<p class='date-post'>" . $post->getDate() . "</p>";
+            echo "<p class='cat-post'>" . $post->getCategorie() . "</p>";
+            echo "<p class='msg-post'>" . $post->getMessage() . "</p>";
+            echo "</div>";
+        }
+        ?>
+    </section>
 
-            <label class="style-post-label" for="message">Message :</label>
-            <textarea class="input-style"  id="message" name="message_post" rows="4" cols="50" required></textarea><br><br>
+    <aside class="rigt-aside">
 
-            <input class="input-style"  type="hidden" name="date_post" value="<?php echo date('Y-m-d'); ?>">
-
-            <label class="style-post-label" for="auteur">Auteur :</label>
-            <input class="input-style"  type="text" id="auteur" name="auteur_post" required><br><br>
-
-            <label class="style-post-label" for="categorie">Catégorie :</label>
-            <select id="categorie" name="categorie_post" required>
-                <option value="Technologie">Technologie</option>
-            </select><br><br>
-
-            <input class="submit-button" type="submit" value="Créer le Post">
-        </form>
-    </div>
-
+    </aside>
 </div>
-<?php
-// Inclure le fichier AffichagePosts.php pour utiliser la fonction afficherPosts
-require '../Post/AffichagePost.php';
-// Appel de la fonction afficherPosts pour obtenir les posts
-$posts = afficherPosts();
 
-// Affichage des posts
-foreach ($posts as $post) {
-    echo "<div class='post-container'>";
-    echo "<h3>" . $post['titre_posts'] . "</h3>";
-    echo "<p>" . $post['message_posts'] . "</p>";
-    echo "<p>Date : " . $post['date_posts'] . "</p>";
-    echo "<p>Auteur : " . $post['auteur_posts'] . "</p>";
-    echo "<p>Catégorie : " . $post['categorie_posts'] . "</p>";
-    echo "</div>";
-}
-?>
-
-
-<script src="script.js"></script>
 </body>
 </html>

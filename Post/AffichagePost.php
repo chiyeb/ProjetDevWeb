@@ -28,17 +28,6 @@
             $posts[] = $post;
         }
 
-        // Vous pouvez maintenant utiliser le tableau $posts contenant les objets "posts"
-
-        // Exemple d'accès aux données d'un post
-        foreach ($posts as $post) {
-            echo "Titre : " . $post->titre . "<br>";
-            echo "Message : " . $post->message . "<br>";
-            echo "Date : " . $post->date . "<br>";
-            echo "Auteur : " . $post->auteur . "<br>";
-            echo "Catégorie : " . $post->categorie . "<br>";
-            echo "<br>";
-        }
     } else {
         // Gérez les erreurs ici en fonction de la connexion à la base de données
         echo "Erreur lors de l'exécution de la requête SQL : " . $conn->errorInfo()[2];
