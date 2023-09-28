@@ -71,8 +71,8 @@
             <input class="submit-button" type="submit" value="Créer le Post">
         </form>
     </div>
-
 </div>
+<script src="script.js"></script>
 <?php
 // Inclure le fichier AffichagePosts.php pour utiliser la fonction afficherPosts
 require '../Post/AffichagePost.php';
@@ -81,17 +81,13 @@ $posts = afficherPosts();
 
 // Affichage des posts
 foreach ($posts as $post) {
-    echo "<div class='post-container'>";
-    echo "<h3>" . $post['titre_posts'] . "</h3>";
-    echo "<p>" . $post['message_posts'] . "</p>";
-    echo "<p>Date : " . $post['date_posts'] . "</p>";
-    echo "<p>Auteur : " . $post['auteur_posts'] . "</p>";
-    echo "<p>Catégorie : " . $post['categorie_posts'] . "</p>";
-    echo "</div>";
+    echo "<h3>" . $post->getTitre() . "</h3>";
+    echo "<p>" . $post->getMessage() . "</p>";
+    echo "<p>Date : " . $post->getDate() . "</p>";
+    echo "<p>Auteur : " . $post->getAuteur() . "</p>";
+    echo "<p>Catégorie : " . $post->getCategorie() . "</p>";
 }
 ?>
 
-
-<script src="script.js"></script>
 </body>
 </html>
