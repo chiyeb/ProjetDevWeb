@@ -38,7 +38,7 @@
     <label>Mot de passe</label>
     <input type="password" name="password" placeholder="Mot de passe"><br>
 
-    <button type="submit">Se Connecter</button>
+    <button type="submit">S'inscrire</button>
     <a href="../index.php" class="creation">Déjà un compte ? Connectez-vous</a>
 </form>
 </body>
