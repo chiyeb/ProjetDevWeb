@@ -13,7 +13,7 @@
     <form method="POST" action="Contact.php">
     <div class="form-group">
         <input type="text" name="nom" placeholder="Indiquez votre nom"><br>
-        <input type="text" name="Prenom" placeholder="Indiquez votre Prenom"><br>
+        <input type="text" name="prenom" placeholder="Indiquez votre prénom"><br>
         <input type="email" name="email" placeholder="Indiquez votre adresse mail"><br>
     </div>
     <div class="form-group">
