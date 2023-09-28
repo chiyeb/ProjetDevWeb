@@ -13,5 +13,24 @@ class Post {
         $this->auteur = $auteur;
         $this->categorie = $categorie;
     }
+    public function getTitre() {
+        return $this->titre;
+    }
+
+    public function getMessage() {
+        return $this->message;
+    }
+
+    public function getDate() {
+        return $this->date;
+    }
+
+    public function getAuteur() {
+        return $this->auteur;
+    }
+
+    public function getCategorie() {
+        return $this->categorie;
+    }
 }
 ?>

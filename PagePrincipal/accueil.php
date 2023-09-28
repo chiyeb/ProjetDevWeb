@@ -73,6 +73,11 @@
     </div>
 
 </div>
+
+
+
+<script src="script.js"></script>
+
 <?php
 // Inclure le fichier AffichagePosts.php pour utiliser la fonction afficherPosts
 require '../Post/AffichagePost.php';
@@ -90,8 +95,5 @@ foreach ($posts as $post) {
     echo "</div>";
 }
 ?>
-
-
-<script src="script.js"></script>
 </body>
 </html>

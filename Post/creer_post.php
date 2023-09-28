@@ -50,6 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':auteur_post', $auteur_post, PDO::PARAM_INT);
         $stmt->bindParam(':categorie_post', $categorie_post, PDO::PARAM_INT);
         $stmt->execute();
+        header("Location: ../PagePrincipal/accueil.php");
+        exit();
+
     } else {
         echo "Catégorie non trouvée.";
     }

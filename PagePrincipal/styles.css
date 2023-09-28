@@ -4,7 +4,7 @@
     font-family: Arial;
 }
 :root{
-    --main-bg-color: #151515 ;
+    --main-bg-color: #151515;
     --second-bg-color: #42bbfd;
     --hover-bg-color : #424242;
     --shadow-color : #b6b6b6;
@@ -264,3 +264,22 @@ nav {
     display: block; /* Afficher le bouton en bloc (une ligne) */
     margin-top: 10px; /* Ajouter une marge en haut du bouton */
 }
+
+/*------Affichage Post------/*
+
+ */
+/* Ajoutez ce style pour centrer la zone des posts */
+#post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: auto;
+    width: 50%; /* Vous pouvez ajuster la largeur selon vos préférences */
+    margin-top: 20px; /* Ajoutez un espace en haut */
+}
+
+
+
+
