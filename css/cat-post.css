@@ -1,0 +1,843 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+:root{
+    --main-bg-color: #181A1D;
+    --second-bg-color: #42bbfd;
+    --hover-bg-color : #424242;
+    --shadow-color : #ffffff;
+    --dropmenu-form: #202528;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+    --color-info-dark: #7d8da1;
+    --color-dark-variant: #a3bdcc;
+
+}
+.profile-image {
+    border-radius: 50%; /* Pour rendre l'image ronde */
+    width: 100px; /* Ajustez la taille selon vos besoins */
+    height: 100px; /* Ajustez la taille selon vos besoins */
+    object-fit: cover; /* Pour ajuster la taille de l'image tout en conservant son aspect */
+    display: block; /* Assurez-vous que l'image est un élément block pour appliquer les styles de centrage */
+    margin: 0 auto; /* Centrez l'image horizontalement */
+}
+
+
+
+body {
+    background-color: var(--main-bg-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Hauteur de la fenêtre du navigateur */
+    overflow: hidden; /* Prevent vertical scrolling */
+
+}
+
+header {
+    position: relative;
+    background-color: var(--main-bg-color);
+    color: #fff;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--shadow-color);
+
+}
+
+/* Style pour le logo à gauche du header */
+.logo {
+    width: 80px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+/* Style pour la barre de recherche au milieu du header */
+
+.search-bar input {
+    width: 400px;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 10px;
+
+}
+
+/* Style pour "NOM" tout à droite du header */
+.wrapper {
+    display: flex;
+    align-items: stretch;
+    /* Stretch items to equal height */
+    height: 100vh;
+
+}
+
+.btn-user {
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 35px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+/*---MENU NAV ITEM---*/
+
+nav {
+    background-color: var(--main-bg-color);
+    color: #fff;
+    width: 30%;
+    height: 80%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: flex-start;
+
+
+}
+
+
+
+
+.menu-item {
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 22px 22px;
+
+
+
+}
+
+.menu-item-home,
+.menu-item-msg,
+.menu-item-profil,
+.menu-item-contact {
+    height: 50px;
+    padding: 20px 15px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+
+}
+
+.menu-item-home i,
+.menu-item-msg i,
+.menu-item-profil i,
+.menu-item-contact i {
+
+    font-size: 20px;
+}
+
+
+.menu-item-home:hover,
+.menu-item-msg:hover,
+.menu-item-profil:hover,
+.menu-item-contact:hover {
+    width: 230px;
+    background-color: var(--hover-bg-color);
+    transition: 0.5s ease;
+}
+
+.menu-item-home:hover i,
+.menu-item-msg:hover i,
+.menu-item-profil:hover i,
+.menu-item-contact:hover i {
+    color: var(--second-bg-color);
+    transition: 0.5s;
+    font-size: 20px;
+}
+
+
+.btn-menu {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50px;
+}
+
+/*---DROPMENU---*/
+
+
+.dropmenu {
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    top: 0;
+    width: 260px;
+    height: 100vh;
+    background: var(--dropmenu-form);
+    transition: 0.4s;
+    margin-right: -100%;
+
+
+}
+
+.dropmenu{
+    display: block;
+}
+
+.drop-list {
+    margin-right: 0;
+
+}
+
+.close {
+    padding: 10px 0 0 15px;
+    font-size: 20px;
+}
+.drop-logo {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    margin-top: 10px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+
+.dropmenu-item {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    gap: 1rem;
+    height: 8vh;
+    position: relative;
+    left: 2.8rem;
+    top: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+
+
+
+}
+
+.drop-user {
+    font-size: 18px;
+}
+
+.dropmenu-item:hover {
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.dropmenu-item a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: all 0.3s ease;
+
+}
+
+.dropmenu-item-last {
+    position: absolute;
+    bottom: 2rem;
+    left: 10%;
+    height: 5vh;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+
+
+}
+
+.dropmenu-item-last i {
+    position: relative;
+    top: 0.2rem;
+    font-size: 20px;
+}
+
+.dropmenu-item:hover {
+    border: 2px solid white;
+    margin-left: 10px;
+}
+
+
+.dropmenu-item-last:hover {
+    border: 2px solid white;
+    margin-left: 10px;
+
+}
+
+.dropmenu-item-last a {
+    text-decoration: none;
+    font-size: 19px;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 2px;
+
+
+
+}
+
+.dropmenu-item-last i {
+    font-size: 28px;
+
+}
+
+.dropmenu-item i {
+    font-size: 24px;
+}
+
+
+
+.user-info {
+    border-right: 1px solid white;
+    padding: 3%;
+    color: white;
+    width: 40%;
+    text-align: left;
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: calc(100vh - 60px); /* Adjust the max height to leave space */
+    background: var(--main-bg-color);
+}
+
+/*---Menu-User---*/
+
+.menu-user  {
+    background: var(--dropmenu-form);
+    margin-bottom: 20px;
+    padding: 15px;
+    box-shadow: var(--box-shadow);
+    border-radius: 30px;
+    border: 2px solid white;
+}
+.menu-user .username {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold ;
+}
+.menu-user i {
+    display: flex;
+    justify-content: center;
+    font-size: 100px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+/*---menu-mail---*/
+
+.menu-mail {
+    background: var(--dropmenu-form);
+    display: flex;
+    font-size: 20px;
+    gap: 1rem;
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+
+}
+
+.menu-mail i {
+    font-size: 30px;
+}
+
+.menu-mail .profil-email {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-mail:hover{
+    background: var(--main-bg-color);
+    transition: all 0.2s;
+    border :2px solid white;
+}
+
+
+/*---MenuJoin---*/
+
+.menu-join {
+    background: var(--dropmenu-form);
+    display: flex;
+    font-size: 20px;
+    gap: 1rem;
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.menu-join i {
+    font-size: 30px;
+}
+
+.menu-join .join {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-join:hover{
+    background: var(--main-bg-color);
+    transition: all 0.3s;
+    border :2px solid white;
+}
+/*---menu-post---*/
+
+.menu-post {
+    background: var(--dropmenu-form);
+    display: flex;
+    font-size: 20px;
+    gap: 1rem;
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+
+}
+
+.menu-post i {
+    font-size: 30px;
+}
+
+.menu-post .nbPost {
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-post:hover {
+    background: var(--main-bg-color);
+    transition: all 0.3s;
+    border :2px solid white;
+
+}
+/*---menu-admin---*/
+
+.menu-admin {
+    background: var(--dropmenu-form);
+    display: flex;
+    font-size: 20px;
+    gap: 1rem;
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.menu-admin i {
+    font-size: 30px;
+}
+
+.menu-admin .admin {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    font-weight: bold   ;
+}
+.menu-admin:hover {
+    background: var(--main-bg-color);
+    transition: all 0.3s;
+    border :2px solid white;
+
+}
+
+/* ---menuMdp---*/
+
+.menu-mdp {
+    background: var(--dropmenu-form);
+    display: flex;
+    font-size: 20px;
+    gap: 1rem;
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.menu-mdp i {
+    font-size: 30px;
+}
+
+.menu-mdp .mdp-menu {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    font-weight: bold   ;
+    color: white;
+    text-decoration: none;
+}
+.menu-mdp:hover {
+    background: var(--main-bg-color);
+    transition: all 0.3s;
+    border :2px solid white;
+
+}
+
+/*--- chgMAil ---*/
+
+.menu-chg-email {
+    background: var(--dropmenu-form);
+    display: flex;
+    font-size: 20px;
+    gap: 1rem;
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.menu-chg-email i {
+    font-size: 30px;
+}
+
+.menu-chg-email .chg-menu {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    font-weight: bold   ;
+    color: white;
+    text-decoration: none;
+}
+.menu-chg-email:hover {
+    background: var(--main-bg-color);
+    transition: all 0.3s;
+    border :2px solid white;
+
+}
+
+/*--- formTelechargerment ---*/
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 15px;
+    padding: 15px;
+    background-color: var(--dropmenu-form);
+    box-shadow: var(--box-shadow);
+
+}
+
+form input#image {
+    padding: 15px;
+}
+
+
+form .submit {
+    border-radius: 30px;
+    padding: 8px;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: 0.5s;
+
+
+}
+
+.label-profil {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.label-profil i {
+    font-size: 20px;
+}
+
+.post-principal .title-hist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+    font-size: 20px;
+
+}
+.post-principal .title-hist i {
+    font-size: 25px;
+}
+
+.post-principal{
+    width: 60%;
+    text-align: center; /* Centre le contenu de la section */
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: calc(100vh - 60px); /* Adjust the max height to leave space */
+    padding: 3% 0 0 0;
+}
+
+.post-container {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px auto; /* Centre le contenu horizontalement */
+    text-align: center; /* Aligne le texte à gauche à l'intérieur du conteneur */
+    width: 80%; /* Ajuste la largeur du conteneur selon vos besoins */
+    color: white;
+    border-bottom: 4px solid var(--shadow-color);
+
+}
+
+.delete-post {
+    position: absolute;
+    top: 5px; /* Ajustez la position verticale en conséquence */
+    right: 5px; /* Ajustez la position horizontale en conséquence */
+    padding: 5px;
+    cursor: pointer;
+}
+
+.post-container h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #333; /* Couleur du titre */
+}
+
+.post-container p {
+    margin-bottom: 8px;
+}
+
+.post-container .date-post {
+    font-style: italic;
+    color: var(--date-color); /* Couleur de la date */
+}
+
+.post-container .author-post {
+    font-weight: bold;
+    color: var(--author-color); /* Couleur de l'auteur */
+}
+
+.post-container .cat-post {
+    color: var(--cat-color); /* Couleur de la catégorie */
+}
+
+.post-container .title-post{
+    color: var(--title-post-color);
+}
+
+.input-style {
+    width: 50%; /* Faire en sorte que les input prennent la largeur complète du conteneur */
+    padding: 5px; /* Ajouter un peu de marge intérieure pour un meilleur espacement */
+    margin-bottom: 10px; /* Ajouter une marge en bas de chaque input */
+}
+
+.menu-item-bar {
+    display: none;
+}
+
+.all-pages {
+    width: 75%;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    display: flex;
+}
+
+.cat-post {
+    display: none;
+}
+
+.cat-profil {
+    display: none;
+}
+
+
+@media screen and (max-width: 1391px) {
+    .btn-menu {
+        display: none;
+    }
+
+
+    nav {
+        width: 10%;
+    }
+
+    nav a {
+        display: none;
+    }
+
+    .menu-item-home i,
+    .menu-item-msg i,
+    .menu-item-profil i,
+    .menu-item-contact i {
+
+        font-size: 25px;
+
+    }
+
+    .menu-item-home:hover i,
+    .menu-item-msg:hover i,
+    .menu-item-profil:hover i,
+    .menu-item-contact:hover i {
+        font-size: 25px;
+
+    }
+
+    .menu-item-home:hover,
+    .menu-item-msg:hover,
+    .menu-item-profil:hover,
+    .menu-item-contact:hover {
+        width: 34px;
+    }
+
+    .all-pages {
+        width: 90%;
+    }
+
+
+}
+
+
+@media screen and (max-width: 1124px) {
+
+
+    .menu-item-bar {
+        width: 97%;
+        position: absolute;
+        top: 89%;
+        padding: 10px 10px;
+        color: white;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .menu-item-bar i {
+        padding: 20px 50px 20px 50px;
+        font-size: 23px;
+
+
+    }
+
+    .all-pages {
+        flex-direction: column;
+        width: 100%;
+
+    }
+
+    .menu-item {
+        display: none;
+    }
+
+    nav {
+        display: none;
+    }
+
+
+
+    .dropmenu-item {
+        z-index: 0;
+    }
+
+    .menu-item-home,
+    .menu-item-msg,
+    .menu-item-profil,
+    .menu-item-contact{
+
+        font-size: 19px;
+
+
+    }
+
+    .user-info {
+        display: none;
+        height: 65vh;
+        border-bottom: 1px solid white;
+        float: none;
+        width: 94%;
+    }
+
+    .post-principal {
+        height: 60vh;
+        border-bottom: 1px solid white;
+        float: none;
+        width: 100%;
+    }
+
+    .cat-profil {
+        height: 10vh;
+        border-bottom: 1px solid white;
+        float: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .profil-cat {
+        text-decoration: none;
+        color: white;
+        font-size: 25px;
+    }
+    .cat-profil i {
+        color: white;
+        font-size: 20px;
+    }
+
+
+
+}
+
+
+
+@media screen and (max-width: 449px) {
+
+    .all-pages {
+        border: none;
+    }
+    nav {
+        gap: 0;
+
+    }
+
+    .logo {
+        width: 60px;
+        margin-left: 4px;
+    }
+
+    .btn-user {
+        font-size: 30px;
+        margin-right: 2px;
+    }
+
+    nav {
+        gap: 0;
+
+    }
+
+    .search-bar input {
+        padding: 10px;
+    }
+
+    .menu-item-bar i {
+        padding: 20px 28px 20px 28px;
+        font-size: 25px;
+
+
+    }
+    .menu-item-bar {
+        padding: 0;
+        width: 99%;
+
+    }
+
+    .post-principal .title-hist {
+        font-size: 15px;
+    }
+
+
+
+
+
+
+}
+
+@media screen and (max-width: 676px) {
+    .search-bar input {
+        width: 300px;
+
+    }
+
+
+}
+
+@media screen and (max-width: 547px) {
+    .search-bar input {
+        width: 100%;
+
+
+    }
+
+}

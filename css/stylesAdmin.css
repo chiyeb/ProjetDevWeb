@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+:root{
+    --main-bg-color: #151515;
+    --second-bg-color: #42bbfd;
+    --hover-bg-color : #424242;
+    --shadow-color : #ffffff;
+}
+
+
+body {
+    background-color: var(--main-bg-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Hauteur de la fenêtre du navigateur */
+    overflow: hidden; /* Prevent vertical scrolling */
+
+}
+
+header {
+    background-color: var(--main-bg-color);
+    color: #fff;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0px;
+    border-bottom: 3px solid var(--shadow-color);
+    position: relative;
+
+}
+
+/* Style pour le logo à gauche du header */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+/* Style pour "NOM" tout à droite du header */
+.wrapper {
+    display: flex;
+    align-items: stretch; /* Stretch items to equal height */
+    height: 100vh;
+
+}
+
+.btn {
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+nav {
+    background-color: var(--main-bg-color);
+    float: left;
+    color: #fff;
+    padding: 10px;
+    width: 25%;
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 3px solid var(--shadow-color);
+    align-self: flex-start;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center; /* Aligner les icônes et les boutons verticalement */
+    padding: 20px 20px; /* Ajuster l'espacement entre les icônes et les boutons */
+    border-radius: 50px;
+
+
+}
+
+.menu-item:hover{
+    background-color: var(--hover-bg-color);
+    transition: 0.5s;
+}
+.menu-item:hover i{
+    color: var(--second-bg-color);
+    transition: 0.5s;
+    font-size: 25px;
+}
+
+.menu-item i {
+    margin-right: 10px; /* Espacement entre l'icône et le bouton */
+}
+
+.btn-menu {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50px;
+}
+.creer-cat{
+    padding: 3% 0% 0 3%;
+    color: white;
+    width: 80%;
+    float: left;
+    margin-left: auto;
+    text-align: left;
+    max-height: calc(100vh - 60px); /* Adjust the max height to leave space */
+}
+
+.ban-user{
+    padding: 4% 0% 0 3%;
+    color: white;
+    width: 80%;
+    float: left;
+    margin-left: auto;
+    text-align: left;
+    max-height: calc(100vh - 60px); /* Adjust the max height to leave space */
+}
+.error{
+    padding: 3% 0% 0 3%;
+    color: white;
+    font-size: 45px;
+}

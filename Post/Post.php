@@ -28,9 +28,18 @@ class Post {
     public function getAuteur() {
         return $this->auteur;
     }
+        public function getCategorie() {
+            $catid = $this->categorie;
+            $stmt = dbconnect()->prepare("SELECT libelle_cat FROM categorie WHERE id_cat = :catid");
+            $stmt->bindParam(':catid', $catid, PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    public function getCategorie() {
-        return $this->categorie;
-    }
+            if ($result) {
+                return $result['libelle_cat'];
+            } else {
+                return "Catégorie inconnue"; // Handle the case when the category is not found
+            }
+        }
 }
 ?>

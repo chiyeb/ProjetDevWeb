@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<form action="sighup.php" method="post">
+<form action="sighup.php" method="post" class="form">
     <h2>Inscription</h2>
     <?php if (isset($_GET['error'])) { ?>
         <p class="error"><?php echo $_GET['error']; ?></p>
@@ -19,27 +19,19 @@
         <p class="success"><?php echo $_GET['success']; ?></p>
     <?php } ?>
 
-    <label>Adresse e-mail</label>
-    <?php if (isset($_GET['error'])) { ?>
-        <input type="email" name="email" placeholder="Adresse e-mail" value="<?php echo $_GET['error']; ?>"><br>
-    <?php } else{ ?>
-        <input type="email" name="email" placeholder="Adresse e-mail"><br>
-    <?php  } ?>
+    <label for="email" class="label">Email</label>
+    <input type="email" name="email" placeholder="Adresse e-mail"><br>
 
 
-    <label>Utilisateur</label>
-    <?php if (isset($_GET['error'])) { ?>
-        <input type="text" name="username" placeholder="Utilisateur" value="<?php echo $_GET['error']; ?>"><br>
-    <?php } else{ ?>
-        <input type="text" name="username" placeholder="Utilisateur"><br>
-    <?php  } ?>
+    <label for="username" class="label">Nom d'utilisateur</label>
+    <input type="text" name="username" placeholder="Utilisateur"><br>
 
 
-    <label>Mot de passe</label>
+    <label for="password" class="label">Mot de passe</label>
     <input type="password" name="password" placeholder="Mot de passe"><br>
 
-    <button type="submit">S'inscrire</button>
-    <a href="../index.php" class="creation">Déjà un compte ? Connectez-vous</a>
+    <input class="submit" type="submit" value="S'enregistrer">
+    <span class="span">Déjà un compte ? <a href="../index.php">Connectez-vous</a></span>
 </form>
 </body>
 </html>

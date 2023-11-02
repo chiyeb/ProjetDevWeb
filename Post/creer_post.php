@@ -1,16 +1,7 @@
 <?php
-$db_host = "mysql-ysite.alwaysdata.net";
-$db_name = "ysite_allbd";
-$db_user = "ysite_chiheb";
-$db_pass = "chihebysite";
-
-try {
-    $db = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
-    // Configurez les options PDO si nécessaire
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Erreur de connexion à la base de données : " . $e->getMessage();
-}
+session_start();
+require '../Log&Inscr/sql-login.php';
+$db = dbconnect();
 function lastId($pdo) {
     $stmt = $pdo->prepare("SELECT MAX(id_post) FROM posts");
     $stmt->execute();
@@ -28,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $titre_post = $_POST["titre_post"];
     $message_post = $_POST["message_post"];
     $date_post = $_POST["date_post"];
-    $auteur_post = $_POST["auteur_post"];
+    $auteur_post = $_SESSION['id'];
     $categorie_post = $_POST["categorie_post"];
 
     // Obtenez l'ID de la catégorie en utilisant une requête SELECT

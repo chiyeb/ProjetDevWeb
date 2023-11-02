@@ -1,6 +1,6 @@
     <?php
     function afficherPosts(){
-    require '../Log&Inscr/sql-login.php'; // Utilisez un fichier approprié pour la connexion PDO
+    require_once '../Log&Inscr/sql-login.php'; // Utilisez un fichier approprié pour la connexion PDO
     require 'Post.php'; // Incluez la classe Post
 
     $conn = dbconnect();
@@ -27,7 +27,6 @@
             // Ajoutez l'objet "Post" au tableau des posts
             $posts[] = $post;
         }
-
     } else {
         // Gérez les erreurs ici en fonction de la connexion à la base de données
         echo "Erreur lors de l'exécution de la requête SQL : " . $conn->errorInfo()[2];

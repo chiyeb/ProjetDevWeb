@@ -19,20 +19,30 @@ if (isset($_POST['email']) && isset($_POST['password'])){
         exit();
     } else {
         // Utilisez des requêtes préparées avec PDO pour éviter les injections SQL
-        $sql = "SELECT * FROM user WHERE email=:email AND password=:password";
+        $sql = "SELECT * FROM user WHERE email=:email";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $pass);
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($row) {
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['username'] = $row['username'];
-            $_SESSION['id'] = $row['id'];
-            header("Location: ../PagePrincipal/accueil.php");
-            exit();
+            // Vérifier le mot de passe saisi par rapport au mot de passe haché dans la base de données
+            $hashedPassword = $row['password'];
+            if (password_verify($pass, $hashedPassword)) {
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['username'] = $row['username'];
+                $_SESSION['id'] = $row['id'];
+                if ($row['is_verified']=== 0){
+                    header("Location: ../index.php?error=Vérifier votre adresse e-mail avant de vous connecter. ");
+                    exit();
+                }
+                header("Location: ../view/accueil.php");
+                exit();
+            } else {
+                header("Location: ../index.php?error=E-mail ou Mot de passe Incorrect");
+                exit();
+            }
         } else {
             header("Location: ../index.php?error=E-mail ou Mot de passe Incorrect");
             exit();
