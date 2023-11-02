@@ -54,6 +54,37 @@ class user_model
             }
         }
     }
+    public function changerMdpOublier($code, $nvmdp){
+        var_dump($code);
+            $sql = "SELECT id FROM user WHERE reset_token = :reset_token";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':reset_token', $code);
+            $stmt->execute();
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($row) {
+                $hashed_password = password_hash($nvmdp, PASSWORD_DEFAULT);
+                $userId = $row['id'];
+                echo $userId;
+                $sqlupdate = "UPDATE user SET password = :nouveauMotDePasse WHERE id = :idUtilisateur";
+                $stmt = $this->conn->prepare($sqlupdate);
+                $stmt->bindParam(':nouveauMotDePasse', $hashed_password, PDO::PARAM_STR);
+                $stmt->bindParam(':idUtilisateur', $userId, PDO::PARAM_INT);
+                if ($stmt->execute()) {
+                    $suprreset = "UPDATE user SET reset_token = NULL WHERE id = :id";
+                    $stmt = $this->conn->prepare($suprreset);
+                    $stmt->bindParam(':id', $userId);
+                    $stmt->execute();
+                    header("Location: ../view/changerMdpOublier.php?success=Mot de passe changé.");
+                } else {
+                    header("Location: ../view/changerMdpOublier.php?error=Impossible de changer le mot de passe.");
+                    exit();
+                }
+            } else {
+                header("Location: ../view/changerMdpOublier.php?error=Code de vérification invalide");
+                exit();
+            }
+    }
 
     public function getImage($user)
     {
@@ -77,7 +108,51 @@ class user_model
         $query->execute();
         $db = null;
     }
+    public function mdpOublier($email){
+        $reset_token = random_int(10000, 99999); // Générer un token de réinitialisation
+        $sql = "SELECT * FROM user WHERE email=:email";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        if ($row) {
+            // Stocker le token et l'heure d'expiration dans la base de données
+            $sql = "UPDATE user SET reset_token=:token WHERE email=:email";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':token', $reset_token);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            // Envoyer l'e-mail
+            $this->sendMailMdpOublier($email, $reset_token);
+        }
+    }
+    function sendMailMdpOublier($email, $reset_token)
+    {
+        require '../Log&Inscr/PHPMailer/PHPMailer.php';
+        require '../Log&Inscr/PHPMailer/SMTP.php';
+        require '../Log&Inscr/PHPMailer/Exception.php';
+        $mail = new PHPMailer(true);
+        try {
+            $mail->isSMTP();                                            // Send using SMTP
+            $mail->Host = 'smtp-ysite.alwaysdata.net';                   // Set the SMTP server to send through
+            $mail->SMTPAuth = true;                                     // Enable SMTP authentication
+            $mail->Username = 'ysite@alwaysdata.net';                   // SMTP username
+            $mail->Password = 'ysitemail13';                           // SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;          // Enable implicit TLS encryption
+            $mail->Port = 587;                                          // TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            $mail->setFrom('ysite@alwaysdata.net', 'Y-Mailer');
+            $mail->addAddress($email);
+            $mail->isHTML(true);                                       // Set email format to HTML
+            $mail->Subject = 'Y - Mot de passe oublié ';
+            $verificationLink = "<a href='https://ysite.alwaysdata.net/view/changerMdpOublier.php?token=$reset_token'>Verifier</a>";
+            $mail->Body = "Cliquer sur le lien et entrez le code suivant : $reset_token $verificationLink";
+            $mail->send();
+            header("Location: ../view/mot_de_passe_oublie.php?success=E-mail envoyé avec succès !");
+        } catch (Exception $e) {
+            exit();
+        }
+    }
     function sendMail($email, $v_code)
     {
         if ($email === null && $v_code === null) {
@@ -119,12 +194,11 @@ class user_model
                 $verificationLink = "<a href='https://ysite.alwaysdata.net/view/verife_new_mail.php'>Verifier</a>";
             } else {
                 // Lien pour les autres cas
-                $verificationLink = "<a href='https://ysite.alwaysdata.net/view/verifemail.php?email='$email>Verifier</a>";
+                $verificationLink = "<a href='https://ysite.alwaysdata.net/view/verifemail.php?email=$email'>Verifier</a>";
             }
 
             $mail->Body = "Cliquer sur le lien et entrez le code suivant : $v_code $verificationLink";
             $mail->send();
-            echo 'L\'email a bien été envoyé';
         } catch (Exception $e) {
             exit();
         }
@@ -169,94 +243,92 @@ class user_model
                 exit();
             }
         }
-}
-        public function confirmMail($token, $email){
-            $verifcode = "SELECT * FROM user WHERE email = :email AND verification_code = :token";
-            $stmt = $this->conn->prepare($verifcode);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':token', $token);
-            $stmt->execute();
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            var_dump($email);
-            var_dump($token);
-            if ($row) {
-                $sql = "UPDATE user SET is_verified = true, verification_code = NULL WHERE email = :email";
-                $stmt = $this->conn->prepare($sql);
-                $stmt->bindParam(':email', $email);
-                $stmt->execute();
-                header("Location: ../view/login.php?success=Votre Email a été validé, vous pouvez vous connecter.");
-                exit();
-            } else {
-                header("Location: ../view/verifemail.php?error=Code de validation incorrect");
-            }
-        }
-        public function changerMail(){
-            $nouvelEmail = $_POST['nouvel_email'];
-            $token = $_POST['token'];
-            $idUtilisateur = $_SESSION['id'];
-            $sqlVerification = "SELECT reset_token FROM user WHERE id = :idUtilisateur";
-            $stmtVerification = $this->conn->prepare($sqlVerification);
-            $stmtVerification->bindParam(':idUtilisateur', $idUtilisateur, PDO::PARAM_INT);
-            $stmtVerification->execute();
-            $row = $stmtVerification->fetch(PDO::FETCH_ASSOC);
-
-            if ($row && $row['reset_token'] === $token) {
-                $sql = "UPDATE user SET email = :nouvelEmail, reset_token = NULL WHERE id = :idUtilisateur";
-                $stmt = $this->conn->prepare($sql);
-
-                // Liaison des paramètres
-                $stmt->bindParam(':nouvelEmail', $nouvelEmail, PDO::PARAM_STR);
-                $stmt->bindParam(':idUtilisateur', $idUtilisateur, PDO::PARAM_INT);
-
-                if (!empty($nouvelEmail)) {
-                    if ($stmt->execute()) {
-
-                        header("Location: ../view/verifemail.php?success=Votre Email a été validé");
-                    } else {
-                        header("Location: ../view/verifemail.php?error=Erreur lors de la vérification, veuillez nous contacter.");
-                    }
-                } else {
-                    header("Location: ../view/verifemail.php?error=Mail vide");
-                }
-            } else {
-                header("Location: ../view/verifemail.php?error=Code de validation incorrect");;
-            }
-
-        }
-        public function changerMdp(){
-            $nouveauMotDePasse = $_POST['nouveau_mot_de_passe'];
-            $confirmationMotDePasse = $_POST['confirmation_mot_de_passe'];
-
-            if ($nouveauMotDePasse === $confirmationMotDePasse) {
-                $mdpCrypter = password_hash($nouveauMotDePasse, PASSWORD_ARGON2ID);
-
-                $idUtilisateur = $_SESSION['id'];
-
-                $sql = "UPDATE user SET password = :mdpCrypter WHERE id = :id";
-                $stmt = $this->conn->prepare($sql);
-
-                $stmt->bindParam(':mdpCrypter', $mdpCrypter, PDO::PARAM_STR);
-                $stmt->bindParam(':id', $idUtilisateur, PDO::PARAM_INT);
-
-                if ($stmt->execute()) {
-                    echo "Le mot de passe a été mis à jour avec succès.";
-                } else {
-                    echo "Erreur lors de la mise à jour du mot de passe.";
-                }
-            }else {
-                echo "Les mots de passe ne correspondent pas. Veuillez réessayer.";
-            }
-        }
-        public function suprPost($id){
-            $sql = "DELETE FROM posts WHERE id_post = :postID";
+    }
+    public function confirmMail($token, $email){
+        $verifcode = "SELECT * FROM user WHERE email = :email AND verification_code = :token";
+        $stmt = $this->conn->prepare($verifcode);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':token', $token);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            $sql = "UPDATE user SET is_verified = true, verification_code = NULL WHERE email = :email";
             $stmt = $this->conn->prepare($sql);
-
-            $stmt->bindParam(':postID', $id, PDO::PARAM_INT);
-
-            if ($stmt->execute()) {
-                exit();
-            } else {
-                echo "Erreur lors de la suppression du post veuillez nous contacter.";
-            }
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            header("Location: ../view/login.php?success=Votre Email a été validé, vous pouvez vous connecter.");
+            exit();
+        } else {
+            header("Location: ../view/verifemail.php?error=Code de validation incorrect");
         }
     }
+    public function changerMail(){
+        $nouvelEmail = $_POST['nouvel_email'];
+        $token = $_POST['token'];
+        $idUtilisateur = $_SESSION['id'];
+        $sqlVerification = "SELECT reset_token FROM user WHERE id = :idUtilisateur";
+        $stmtVerification = $this->conn->prepare($sqlVerification);
+        $stmtVerification->bindParam(':idUtilisateur', $idUtilisateur, PDO::PARAM_INT);
+        $stmtVerification->execute();
+        $row = $stmtVerification->fetch(PDO::FETCH_ASSOC);
+
+        if ($row && $row['reset_token'] === $token) {
+            $sql = "UPDATE user SET email = :nouvelEmail, reset_token = NULL WHERE id = :idUtilisateur";
+            $stmt = $this->conn->prepare($sql);
+
+            // Liaison des paramètres
+            $stmt->bindParam(':nouvelEmail', $nouvelEmail, PDO::PARAM_STR);
+            $stmt->bindParam(':idUtilisateur', $idUtilisateur, PDO::PARAM_INT);
+
+            if (!empty($nouvelEmail)) {
+                if ($stmt->execute()) {
+
+                    header("Location: ../view/verifemail.php?success=Votre Email a été validé");
+                } else {
+                    header("Location: ../view/verifemail.php?error=Erreur lors de la vérification, veuillez nous contacter.");
+                }
+            } else {
+                header("Location: ../view/verifemail.php?error=Mail vide");
+            }
+        } else {
+            header("Location: ../view/verifemail.php?error=Code de validation incorrect");;
+        }
+
+    }
+    public function changerMdp(){
+        $nouveauMotDePasse = $_POST['nouveau_mot_de_passe'];
+        $confirmationMotDePasse = $_POST['confirmation_mot_de_passe'];
+
+        if ($nouveauMotDePasse === $confirmationMotDePasse) {
+            $mdpCrypter = password_hash($nouveauMotDePasse, PASSWORD_ARGON2ID);
+
+            $idUtilisateur = $_SESSION['id'];
+
+            $sql = "UPDATE user SET password = :mdpCrypter WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->bindParam(':mdpCrypter', $mdpCrypter, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $idUtilisateur, PDO::PARAM_INT);
+
+            if ($stmt->execute()) {
+                echo "Le mot de passe a été mis à jour avec succès.";
+            } else {
+                echo "Erreur lors de la mise à jour du mot de passe.";
+            }
+        }else {
+            echo "Les mots de passe ne correspondent pas. Veuillez réessayer.";
+        }
+    }
+    public function suprPost($id){
+        $sql = "DELETE FROM posts WHERE id_post = :postID";
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->bindParam(':postID', $id, PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            exit();
+        } else {
+            echo "Erreur lors de la suppression du post veuillez nous contacter.";
+        }
+    }
+}
