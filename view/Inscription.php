@@ -9,6 +9,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/Y.png">
+    <meta name="description" content="Page d'inscription du réseau social Y">
     <link rel="stylesheet" type="text/css" href="../css/sighup.css">
     <title>Y</title>
 </head>

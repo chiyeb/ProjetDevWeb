@@ -15,6 +15,7 @@ class user_model
     {
         $this->conn = (new connectbd_controller())->connectbd();
     }
+    //fonction pour avoir le mail d'un utilisateur grâce à son ID
     public function getEmail($id){
         $sql = "SELECT email FROM user where id = :id";
         $stmt = $this->conn->prepare($sql);
@@ -223,6 +224,7 @@ class user_model
             exit();
         }
     }
+    //fonction pour vérifier si un email est déjà dans la base de donnée
     public function checkEmail($email){
         $sql = "SELECT email FROM user where email = :email";
         $stmt = $this->conn->prepare($sql);
@@ -234,7 +236,7 @@ class user_model
             return false;
         }
     }
-
+//fonction pour avoir le code de confirmation d'un utilisateur grâce à son mail
     public function getCodeConfirm($email){
         $sql = "SELECT verification_code FROM user where email = :email";
         $stmt = $this->conn->prepare($sql);
@@ -247,6 +249,7 @@ class user_model
             return null;
         }
     }
+    //fonction pour renvoyer le code de vérification à un utilisateur par mail
     public function renvoyerMail($email){
         $verification_code = $this->getCodeConfirm($email);
         //si l'utilisateur veut changer d'e-mail

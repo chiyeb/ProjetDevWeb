@@ -19,7 +19,7 @@ if (!isset($_SESSION['id'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="icon" type="image/png" href="../images/Y.png">
     <title>Profil</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
 </head>
@@ -265,6 +265,14 @@ if (!isset($_SESSION['id'])) {
                     //affichge les likes
                     echo "<div class='like_and_comment'>";
                     echo "<div class='likes'>";
+                    $likecontroller = new \control\like_controller();
+                    if ($likecontroller->is_liked($post->getIdPost()) === true) {
+                        echo "
+                <button type='submit' class='like-button' name='like'><i class='fa-solid fa-heart'></i></button>";
+                    } else {
+                        echo "
+                <button type='submit' class='unlike-button' name='unlike'><i class='fa-solid fa-heart'></i></button>";
+                    }
                     echo "<p class='like-post'>" . $post->getLikes() . "</p>";
                     echo "</div>";
                     //affiche les commentaire
@@ -276,6 +284,9 @@ if (!isset($_SESSION['id'])) {
                     echo "</div>";
                     echo "</div>";
                 }
+            }else{
+                    echo "<p class='title-nopost'>Vous n'avez pas encore posté !</p>";
+
             }}?>
 
         </section>
@@ -346,6 +357,11 @@ if (!isset($_SESSION['id'])) {
 
         const btnProfilTel = document.querySelector('.cat-profil')
 
+        const userDrop = document.querySelector('.drop-user')
+
+        userDrop.onclick = function() {
+            window.location.href = "../view/AfficherProfil.php"
+        }
         btnProfilTel.onclick = function () {
             window.location.href = "../view/AfficherProfil.php"
         }

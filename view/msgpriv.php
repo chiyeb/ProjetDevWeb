@@ -20,6 +20,7 @@ if (!isset($_SESSION['id'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Messagerie privée du réseau social Y">
     <title>Boîte de réception</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
 </head>
@@ -261,9 +262,13 @@ if (!isset($_SESSION['id'])) {
         const btnProfilBar = document.querySelector('.menu-item-profil-bar')
         const btnContactBar = document.querySelector('.menu-item-contact-bar')
 
-
-
         const btnInbox = document.querySelector('.cat-inbox')
+
+        const userDrop = document.querySelector('.username')
+
+        userDrop.onclick = function() {
+            window.location.href = "../view/AfficherProfil.php"
+        }
 
         btnInbox.onclick = function () {
             window.location.href = "../view/cat-inbox.php"

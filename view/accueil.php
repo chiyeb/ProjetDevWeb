@@ -19,6 +19,7 @@ include ('scripts.php');
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Un réseau social de microblogging où vous pouvez partager des pensées, des actualités et des informations avec le monde. Suivez vos amis, découvrez des tendances, et participez à des conversations en temps réel. Restez connecté avec ce réseau social rapide et dynamique.">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/Y.png">
     <title>Y</title>
     <?php require_once "scripts.php"?>
 </head>
@@ -449,6 +450,28 @@ include ('scripts.php');
         <div class="menu-item-contact-bar">
             <a href="../view/formulaire.php"><i class="fa-solid fa-envelope"></i></a>
         </div>
+        <?php
+
+        try {
+            require_once '../control/connectbd_controller.php';
+            $connectbd = new \control\connectbd_controller();
+        } catch (PDOException $e) {
+            echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
+            die();
+        }
+        $userId = $_SESSION['id'] ;
+        $pdo = $connectbd->connectbd();
+        $query = "SELECT is_admin FROM user WHERE id = :userId";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result['is_admin'] == 1) {?>
+            <div class="menu-item-admin-bar">
+                <a class="btn-menu" href="PageAdmin.php"><i class="fa-solid fa-lock"></i></a>
+            </div><?php
+        }?>
     </div>
 <script>
     const btnClose = document.querySelector('.close-drop');
@@ -467,6 +490,11 @@ include ('scripts.php');
     const btnContactBar = document.querySelector('.menu-item-contact-bar')
     const btnAdmin = document.querySelector('.menu-item-admin')
 
+    const userDrop = document.querySelector('.username')
+
+    userDrop.onclick = function() {
+        window.location.href = "../view/AfficherProfil.php"
+    }
 
     btnUser.addEventListener('click' , ()=> {
         dropMenu.classList.toggle('drop-list')

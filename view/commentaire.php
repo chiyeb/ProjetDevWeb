@@ -43,7 +43,6 @@ if (!isset($_SESSION['id'])) {
         <div class="drop-logo">
             <img src="../images/Y.png" class="logo">
         </div>
-
         <?php
         require_once "../control/user_controller.php";
         $usercontroller = new \control\user_controller();
@@ -169,7 +168,7 @@ if (!isset($_SESSION['id'])) {
             echo "</div>"; // Fermez la div du post
 
             echo "<div class='comment-form'>";
-            
+
             echo "<form action='../control/comment_controller.php' method='post'>
                     <input type='hidden' name='post_id' value='" . $postId . "'>
                     <textarea name='commentaire' placeholder='Ajouter un commentaire'></textarea>

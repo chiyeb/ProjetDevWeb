@@ -183,9 +183,10 @@ nav {
     top: 0;
     width: 260px;
     height: 100vh;
-    background: var(--dropmenu-form);
+    background: var(--main-bg-color);
     transition: 0.4s;
     margin-right: -100%;
+    border-left: 1px solid white;
 
 
 }

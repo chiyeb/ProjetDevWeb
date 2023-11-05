@@ -15,6 +15,7 @@
     --color-dark-variant: #a3bdcc;
     --icon-color :#fff;
     --main-light-color: #fff;
+    --like-button : #e53030;
 
 }
 
@@ -823,7 +824,51 @@ form .submit {
 }
 
 
+.title-nopost {
+    font-style: italic;
+    color: #777;
+    padding: 10px;
+}
 
+.like-button {
+    background:none;
+    border: none;
+    color: var(--unlike-button);
+    transition: 0.5s;
+}
+.unlike-button{
+    position: relative;
+    bottom: 5px;
+    background:none;
+    border: none;
+    color: var(--like-button);
+    transition: 0.5s;
+
+}
+
+
+/* Style pour les boutons "Like" */
+.like-button, .unlike-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+.like-post{
+    color: var(--main-light-color);
+}
+.like_and_comment{
+    display: flex;
+    padding: 5px;
+    gap: 20px;
+
+}
+
+.likes{
+    display: flex;
+    gap: 5px;
+}
 @media screen and (max-width: 1391px) {
     .btn-menu {
         display: none;

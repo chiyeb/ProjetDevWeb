@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <title>Changer l'E-mail</title>
+    <link rel="icon" type="image/png" href="../images/Y.png">
     <link rel="stylesheet" type="text/css" href="../css/chg-email.css">
 </head>
 <header>

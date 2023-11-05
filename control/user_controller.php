@@ -128,6 +128,7 @@ if (isset($_FILES['image'])){
         $usermodel = new user_model();
         $usermodel->changerUsername($username);
     }
+    //renvoyer le code de vérification par mail
     public function renvoyerMail($email){
         $usermodel = new user_model();
         $usermodel->renvoyerMail($email);
@@ -227,6 +228,7 @@ if (isset($_POST['nouveauUsername'])){
     $usercontroller = new user_controller();
     $usercontroller->changerUsername($_POST['nouveauUsername']);
 }
+//renvoyer le code de confirmation par mail
 if(isset($_POST['renvoyerCodeMailConfirm'])){
     echo "test";
     var_dump(($_POST['RenvoyeremailConfirmMail']));

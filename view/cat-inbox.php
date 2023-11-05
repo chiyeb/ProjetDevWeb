@@ -21,6 +21,7 @@ if (!isset($_SESSION['id'])) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Boîte de réception</title>
+    <link rel="icon" type="image/png" href="../images/Y.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
 </head>
 
@@ -256,6 +257,12 @@ if (!isset($_SESSION['id'])) {
 
 
         const btnMessages = document.querySelector('.cat-msg')
+
+        const userDrop = document.querySelector('.username')
+
+        userDrop.onclick = function() {
+            window.location.href = "../view/AfficherProfil.php"
+        }
 
         btnMessages.onclick = function () {
             window.location.href = "../view/msgpriv.php"

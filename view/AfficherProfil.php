@@ -19,7 +19,8 @@ if (!isset($_SESSION['id'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <meta name="description" content="Profil de l'utilisateur du réseau social Y">
+    <link rel="icon" type="image/png" href="../images/Y.png">
     <title>Profil</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
 </head>
@@ -267,11 +268,20 @@ if (!isset($_SESSION['id'])) {
                 //affichge les likes
                 echo "<div class='like_and_comment'>";
                 echo "<div class='likes'>";
+                $likecontroller = new \control\like_controller();
+                if ($likecontroller->is_liked($post->getIdPost()) === true) {
+                    echo "
+                <button type='submit' class='like-button' name='like'><i class='fa-solid fa-heart'></i></button>";
+                } else {
+                    echo "
+                <button type='submit' class='unlike-button' name='unlike'><i class='fa-solid fa-heart'></i></button>";
+                }
                 echo "<p class='like-post'>" . $post->getLikes() . "</p>";
                 echo "</div>";
                 //affiche les commentaire
                 echo "<div class='comments'> ";
                 echo "<a href='commentaire.php?post_id=" . $post->getIdPost() . "'><i class='fa-solid fa-comment'></i></a>";
+                echo "<p class='like-post'>" . $post->getNbCom() . "</p>";
                 echo "</div> ";
                 echo "</div>";
                 echo "</div>";
@@ -280,7 +290,7 @@ if (!isset($_SESSION['id'])) {
             }
         }
         else{
-            echo "<p class='title-post'>Vous n'avez pas encore posté !</p>";
+            echo "<p class='title-nopost'>Vous n'avez pas encore posté !</p>";
         }
         }?>
 
@@ -355,10 +365,13 @@ if (!isset($_SESSION['id'])) {
         const btnMsgBar = document.querySelector('.menu-item-msg-bar')
         const btnProfilBar = document.querySelector('.menu-item-profil-bar')
         const btnContactBar = document.querySelector('.menu-item-contact-bar')
-
-
+        const userDrop = document.querySelector('.drop-user')
         const btnHistPost = document.querySelector('.cat-post')
 
+
+        userDrop.onclick = function() {
+            window.location.href = "../view/AfficherProfil.php"
+        }
         btnHistPost.onclick = function () {
             window.location.href = "../view/cat-post.php"
         }

@@ -16,7 +16,8 @@ if (!isset($_SESSION['id'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <meta name="description" content="Formulaire de contact du réseau social Y">
+    <link rel="icon" type="image/png" href="../images/Y.png">
     <title>Formulaire</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <?php require_once "scripts.php" ?>
@@ -173,6 +174,11 @@ if (!isset($_SESSION['id'])) {
     const btnProfilBar = document.querySelector('.menu-item-profil-bar')
     const btnContactBar = document.querySelector('.menu-item-contact-bar')
 
+    const userDrop = document.querySelector('.username')
+
+    userDrop.onclick = function() {
+        window.location.href = "../view/AfficherProfil.php"
+    }
 
     btnUser.addEventListener('click' , ()=> {
         dropMenu.classList.toggle('drop-list')

@@ -9,6 +9,8 @@
     --hover-bg-color : #424242;
     --shadow-color : #ffffff;
     --dropmenu-form: #202528;
+    --unlike-button : #fff;
+    --like-button : #e53030;
     --color-light: rgba(0, 0, 0, 0.4);
     --box-shadow: 0 2rem 3rem var(--color-light);
     --color-info-dark: #7d8da1;
@@ -17,9 +19,40 @@
     --main-light-color: #fff;
 
 }
-
+.comments{
+    display: flex;
+    gap: 5px;
+}
+.comments a{
+    text-decoration: none;
+    color: var(--main-light-color);
+}
 html{
     -webkit-text-size-adjust: 100%;
+}
+.like-button {
+    background:none;
+    border: none;
+    color: var(--unlike-button);
+    transition: 0.5s;
+}
+.unlike-button{
+    position: relative;
+    bottom: 5px;
+    background:none;
+    border: none;
+    color: var(--like-button);
+    transition: 0.5s;
+
+}
+
+
+
+/* Style pour les boutons "Like" */
+.like-button, .unlike-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 .profile-image {
      border-radius: 50%; /* Pour rendre l'image ronde */
@@ -596,6 +629,13 @@ form .submit {
     color: #777;
     padding-right:10px ;
 
+
+}
+
+.title-nopost {
+    font-style: italic;
+    color: #777;
+    padding: 10px;
 }
 
 .like-post{
@@ -607,6 +647,8 @@ form .submit {
     gap: 20px;
 
 }
+
+
 
 .likes{
     display: flex;
@@ -789,6 +831,9 @@ form .submit {
 
 .important {
     color: #A94442;
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }
 
 .post-container .cat-poster {
