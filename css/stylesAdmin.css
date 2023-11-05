@@ -1,0 +1,611 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+:root{
+    --main-bg-color: #151515;
+    --second-bg-color: #42bbfd;
+    --hover-bg-color : #424242;
+    --shadow-color : #ffffff;
+    --dropmenu-form: #202528;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+    --color-info-dark: #7d8da1;
+    --color-dark-variant: #a3bdcc;
+    --icon-color :#fff;
+    --main-light-color: #fff;
+}
+
+
+body {
+    background-color: var(--main-bg-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Hauteur de la fenêtre du navigateur */
+    overflow: hidden; /* Prevent vertical scrolling */
+
+}
+
+
+header {
+    background-color: var(--main-bg-color);
+    color: #fff;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0px;
+    border-bottom: 3px solid var(--shadow-color);
+    position: relative;
+
+}
+.logo-image {
+    border-radius: 50%; /* Pour rendre l'image ronde */
+    width: 50px; /* Ajustez la taille selon vos besoins */
+    height: 50px; /* Ajustez la taille selon vos besoins */
+    object-fit: cover; /* Pour ajuster la taille de l'image tout en conservant son aspect */
+    display: block; /* Assurez-vous que l'image est un élément block pour appliquer les styles de centrage */
+    margin: 0 auto; /* Centrez l'image horizontalement */
+}
+
+/* Style pour le logo à gauche du header */
+.logo {
+    width: 80px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* Style pour "NOM" tout à droite du header */
+.wrapper {
+    display: flex;
+    align-items: stretch; /* Stretch items to equal height */
+    height: 100vh;
+
+}
+
+.btn-user {
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 35px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+/*---MENU NAV ITEM---*/
+
+nav {
+    background-color: var(--main-bg-color);
+    float: left;
+    color: var(--icon-color);
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid var(--main-border-color);
+    align-self: flex-start;
+}
+
+
+
+
+.menu-item {
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 22px 22px;
+
+
+
+}
+
+.menu-item-home,
+.menu-item-msg,
+.menu-item-profil,
+.menu-item-contact {
+    height: 50px;
+    padding: 20px 15px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+
+}
+
+.menu-item-home i,
+.menu-item-msg i,
+.menu-item-profil i,
+.menu-item-contact i {
+
+    font-size: 20px;
+}
+
+
+.menu-item-home:hover,
+.menu-item-msg:hover,
+.menu-item-profil:hover,
+.menu-item-contact:hover {
+    background-color: var(--dropmenu-form);
+    transition: 0.5s ease;
+}
+
+.menu-item-home:hover i,
+.menu-item-msg:hover i,
+.menu-item-profil:hover i,
+.menu-item-contact:hover i {
+    color: var(--second-bg-color);
+    transition: 0.5s;
+    font-size: 20px;
+}
+
+/*---DROPMENU---*/
+
+
+.dropmenu {
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    top: 0;
+    width: 260px;
+    height: 100vh;
+    background: var(--main-bg-color);
+    transition: 0.4s;
+    margin-right: -100%;
+    box-shadow: var(--box-shadow);
+    border-left: 1px solid white;
+
+
+}
+
+.dropmenu{
+    display: block;
+}
+
+.drop-list {
+    margin-right: 0;
+
+}
+
+.close {
+    padding: 10px 0 0 15px;
+    font-size: 20px;
+}
+.drop-logo {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    margin-top: 10px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+
+.dropmenu-item {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    gap: 1rem;
+    height: 8vh;
+    position: relative;
+    left: 2.8rem;
+    top: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+
+
+
+
+}
+
+.drop-user {
+    font-size: 18px;
+}
+
+.dropmenu-item:hover {
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.dropmenu-item a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: all 0.3s ease;
+
+}
+
+.dropmenu-item-last {
+    position: absolute;
+    bottom: 2rem;
+    left: 10%;
+    height: 5vh;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+
+
+}
+
+.dropmenu-item-last i {
+    position: relative;
+    top: 0.2rem;
+    font-size: 20px;
+}
+
+.dropmenu-item:hover {
+    border: 2px solid white;
+    margin-left: 10px;
+}
+
+
+.dropmenu-item-last:hover {
+    border: 2px solid white;
+    margin-left: 10px;
+
+}
+
+.dropmenu-item-last a {
+    text-decoration: none;
+    font-size: 19px;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 2px;
+
+
+
+}
+
+.dropmenu-item-last i {
+    font-size: 28px;
+
+}
+
+.dropmenu-item i {
+    font-size: 24px;
+}
+
+.btn-menu {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50px;
+}
+
+
+.creer-cat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2% 0 0 0;
+    color: white;
+    width: 100%;
+    float: left;
+    margin-left: auto;
+    text-align: left;
+    max-height: calc(100vh - 60px); /* Adjust the max height to leave space */
+}
+
+.add-cat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.add-cat i {
+    font-size: 25px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--main-bg-color);
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    border-radius: 25px;
+}
+
+input#nom_cat {
+    border-radius: 30px;
+    padding: 7px;
+
+}
+
+textarea#description {
+    border-radius: 20px;
+    padding: 8px;
+}
+
+label {
+    padding: 10px;
+}
+
+input {
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 20px;
+    width: 50%;
+}
+
+.ban-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2% 0 0 0;
+    color: white;
+    width: 100%;
+    float: left;
+    margin-left: auto;
+    text-align: left;
+    max-height: calc(100vh - 60px); /* Adjust the max height to leave space */
+    border-left: 1px solid white ;
+}
+
+.title-ban {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px;
+}
+
+.title-ban i {
+    font-size: 25px;
+}
+
+input#id_user{
+    border-radius: 30px;
+    padding: 5px;
+    width: 100%;
+}
+
+.user-ban {
+    padding: 0 10px 10px 10px;
+}
+.error{
+    padding: 3% 0 0 0;
+    color: white;
+    font-size: 45px;
+}
+
+.admin-page {
+    border-left: 1px solid white;
+    display: flex;
+    width: 80%;
+}
+
+
+
+.title-admin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.title-admin i {
+    font-size: 25px;
+}
+
+.menu-item-bar {
+    display: none;
+}
+
+
+@media screen and (max-width: 1391px) {
+    .btn-menu a {
+        display: none;
+    }
+
+
+    nav {
+        width: 10%;
+    }
+
+    form label {
+        font-size: 0.9rem;
+    }
+
+    nav a {
+        display: none;
+    }
+
+
+    .admin-page {
+        width: 100%;
+    }
+
+
+
+    .menu-item-home i,
+    .menu-item-msg i,
+    .menu-item-profil i,
+    .menu-item-contact i {
+
+        font-size: 25px;
+
+    }
+
+    .menu-item-home:hover i,
+    .menu-item-msg:hover i,
+    .menu-item-profil:hover i,
+    .menu-item-contact:hover i {
+        font-size: 25px;
+
+    }
+
+    .menu-item-home:hover,
+    .menu-item-msg:hover,
+    .menu-item-profil:hover,
+    .menu-item-contact:hover {
+        width: 29px;
+    }
+
+
+
+}
+
+
+@media screen and (max-width: 1005px) {
+
+
+    .admin-page{
+        border: none;
+
+    }
+
+
+    .error {
+        width: 90%;
+    }
+    .success {
+        width: 90%;
+    }
+
+
+    .menu-item-bar {
+        width: 100%;
+        position: absolute;
+        top: 91%;
+
+        color: white;
+        display: flex;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.42);
+        height: 100%;
+
+
+
+
+
+    }
+    .menu-item-bar i {
+        padding: 20px 50px 20px 50px;
+        font-size: 23px;
+
+
+    }
+
+
+    .menu-item {
+        display: none;
+    }
+
+    nav {
+        width: 0;
+    }
+
+
+
+
+
+    .dropmenu-item {
+        z-index: 0;
+    }
+
+    .menu-item-home,
+    .menu-item-msg,
+    .menu-item-profil,
+    .menu-item-contact{
+
+        font-size: 15px;
+
+    }
+
+    .ban-user {
+        border:none;
+
+    }
+
+
+
+}
+
+
+@media screen and (max-width: 728px) {
+
+    .admin-page{
+        border: none;
+        flex-direction: column;
+
+    }
+
+
+    .logo {
+        width: 60px;
+        margin-left: 4px;
+    }
+
+    .btn-user {
+        font-size: 30px;
+        margin-right: 2px;
+    }
+
+    nav {
+        gap: 0;
+
+    }
+
+    .menu-item-bar i {
+        padding: 20px 28px 20px 28px;
+        font-size: 20px;
+
+
+    }
+    .menu-item-bar {
+        padding: 0;
+        width: 100%;
+
+    }
+
+
+    h1,
+    h2 {
+        font-size: 23px;
+    }
+
+    .creer-cat {
+        height: 60%;
+        padding: 0;
+    }
+
+    .ban-user {
+        height: 24%;
+    }
+
+    form {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 374px) {
+    form {
+        padding: 0 10px 10px 10px;
+        width: 80%;
+    }
+    .add-cat  h1{
+        font-size: 20px;
+    }
+
+    .title-ban h1 {
+        font-size: 20px;
+    }
+}
+
+
+
+
+
